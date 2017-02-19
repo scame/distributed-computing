@@ -146,8 +146,8 @@ public class SliderActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         updateHandler.removeCallbacks(updateRunnable);
-        firstThreadHandler.interrupt();
-        secondThreadHandler.interrupt();
+        if (firstThreadHandler != null) firstThreadHandler.interrupt();
+        if (secondThreadHandler != null) secondThreadHandler.interrupt();
         busyThreadsHandler.destroy();
         super.onDestroy();
     }
