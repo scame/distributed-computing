@@ -12,8 +12,8 @@ public abstract class ThreadHandler {
 
     Handler handler;
 
-    public ThreadHandler(int priority) {
-        this.handlerThread = new HandlerThread(this.getClass().getCanonicalName(), priority);
+    public ThreadHandler() {
+        this.handlerThread = new HandlerThread(this.getClass().getCanonicalName());
         this.handlerThread.start();
         handler = new Handler(handlerThread.getLooper());
         scheduleUpdates();

@@ -104,8 +104,10 @@ public class SliderActivity extends AppCompatActivity {
         view.setClickable(false);
         view.setEnabled(false);
 
-        firstThreadHandler = new FirstThreadHandler(getFirstThreadPriority());
-        secondThreadHandler = new SecondThreadHandler(getSecondThreadPriority());
+        firstThreadHandler = new FirstThreadHandler();
+        secondThreadHandler = new SecondThreadHandler();
+        firstThreadHandler.setPriority(getFirstThreadPriority());
+        secondThreadHandler.setPriority(getSecondThreadPriority());
     }
 
     public int getFirstThreadPriority() {
@@ -124,7 +126,7 @@ public class SliderActivity extends AppCompatActivity {
     }
 
     public int getSecondThreadPriority() {
-        int checkedId = radioGroup1.getCheckedRadioButtonId();
+        int checkedId = radioGroup2.getCheckedRadioButtonId();
 
         switch (checkedId) {
             case R.id.max_btn2:

@@ -1,8 +1,6 @@
 package com.scame.sliderlab;
 
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +13,6 @@ public class BusyThreadsHandler {
     public BusyThreadsHandler(int threadsNumber) {
         this.threadsNumber = threadsNumber;
         this.threadList = new ArrayList<>(threadsNumber);
-        Log.i("onxThreadNumber", threadsNumber + "");
     }
 
     void activate() {
@@ -27,7 +24,6 @@ public class BusyThreadsHandler {
 
         for (Thread thread : threadList) {
             thread.start();
-            Log.i("onxStarted", "done");
         }
     }
 
