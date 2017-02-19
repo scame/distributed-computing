@@ -38,6 +38,14 @@ public class SliderActivity extends AppCompatActivity {
 
     private boolean started;
 
+    private Runnable updateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            seekBar.setProgress(seekValue.get());
+            updateHandler.postDelayed(this, UPDATE_INTERVAL_MS);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,13 +97,7 @@ public class SliderActivity extends AppCompatActivity {
     }
 
     private void scheduleUpdates() {
-        updateHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                seekBar.setProgress(seekValue.get());
-                updateHandler.postDelayed(this, UPDATE_INTERVAL_MS);
-            }
-        }, UPDATE_INTERVAL_MS);
+        updateHandler.postDelayed(updateRunnable, UPDATE_INTERVAL_MS);
     }
 
     @OnClick(R.id.start_btn)
@@ -140,8 +142,10 @@ public class SliderActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onDestroy() {
+        updateHandler.removeCallbacks(updateRunnable);
         firstThreadHandler.interrupt();
         secondThreadHandler.interrupt();
         busyThreadsHandler.destroy();
