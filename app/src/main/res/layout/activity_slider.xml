@@ -10,8 +10,140 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.scame.sliderlab.SliderActivity">
 
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/def_margin" />
+
+
     <TextView
+        android:id="@+id/min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_below="@id/seekbar"
+        android:layout_margin="@dimen/def_margin"
+        android:text="MIN" />
+
+    <TextView
+        android:id="@+id/normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar"
+        android:layout_margin="@dimen/def_margin"
+        android:layout_toRightOf="@id/min"
+        android:text="NORMAL" />
+
+    <TextView
+        android:id="@+id/max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar"
+        android:layout_margin="@dimen/def_margin"
+        android:layout_toRightOf="@id/normal"
+        android:text="MAX   " />
+
+    <RadioGroup
+        android:id="@+id/thread1_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/min"
+        android:layout_alignRight="@id/max"
+        android:layout_below="@id/min"
+        android:layout_marginTop="@dimen/def_margin"
+        android:layout_marginBottom="@dimen/def_margin"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/min_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:checked="true"/>
+
+
+        <RadioButton
+            android:id="@+id/normal_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+
+        <RadioButton
+            android:id="@+id/max_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/thread1_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar"
+        android:layout_margin="@dimen/def_margin"
+        android:layout_toRightOf="@id/thread1_group"
+        android:layout_alignTop="@id/thread1_group"
+        android:text="Thread1 priority: " />
+
+    <RadioGroup
+        android:id="@+id/thread2_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/min"
+        android:layout_alignRight="@id/max"
+        android:layout_below="@id/thread1_group"
+        android:layout_marginTop="@dimen/def_margin"
+        android:layout_marginBottom="@dimen/def_margin"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/min_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+
+        <RadioButton
+            android:id="@+id/normal_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+
+        <RadioButton
+            android:id="@+id/max_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/thread2_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar"
+        android:layout_margin="@dimen/def_margin"
+        android:layout_toRightOf="@id/thread2_group"
+        android:layout_alignTop="@id/thread2_group"
+        android:text="Thread2 priority: " />
+
+    <Button
+        android:id="@+id/start_btn"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thread2_label"
+        android:layout_margin="@dimen/def_margin"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
